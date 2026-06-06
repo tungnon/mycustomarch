@@ -5,7 +5,7 @@
 ## Intro
 I suck at grammar and I am not asking AI to help. So yeah, deal with imperfect writing. Anyway, this is how I setup my Arch Linux. it is very far from "cultural Arch" but it works for me. Feel free to follow or use this as a baseline if you wish. This assumes you already know how to install Arch manually. **If you do not know why you are doing any of these, this page isn't for you and install CachyOS or vanilla Arch via archinstall instead.**
 
-## Goal
+## What we will get here
 - Distro: Arch Linux
 - Kernel: CachyOS kernel (CachyOS LTS is also optional choice)
 - Repos: Core + Extra + Multilib + CachyOS repos 
@@ -15,21 +15,34 @@ I suck at grammar and I am not asking AI to help. So yeah, deal with imperfect w
 - Swap: zram
 - AUR Helper: paru
 - WM: niri 
-- Shell: Noctalia V5 
+- Desktop Shell: Noctalia V5 
+- Terminal Shell: Fish
 - Display Manager: ly
 - File Manager: Thunar
-- Desktop Portal: gtk and gnome (Nautilus won't be on our system)
 - Text Editors: nano and mousepad
 - Archive Managers: XArchiver
 - Terminal Emulators: Kitty (Alacritty is also great here)
 - Theming: nwg-look qt5ct qt6ct darkly adw-gtk-theme
-### Goal Explanation
-WIP
 
-## Choose Live ISO
-We need one of these:
-- Arch Linux (ssh is recommended if you use arch iso)
-- CachyOS or EndeavourOS either works. We are installing manually anyway, those iso just provide nice graphical environment for us to open this page and Arch Wiki.
+## Goal Explanation
+### CachyOS stuff
+I believe we should fully utilize our premium CPU that we paid. So optimized binaries are nice to have even if it means only +10% performance max. Also, custom kernel that targets desktop instead of global system is really nice to have. Overall it's just free upgrade over stock Arch binaries and Arch kernel.
+### Systemd Boot
+I assume you should already have UEFI. If not, enable it first. If you can't your firmware to be UEFI at all, then this guide isn't for you.
+### XFS as file system
+I believe XFS is the most simple and efficient file system. Sure no snapshots no advanced feature and you can't shrink it but who cares. Let's keep it simple shall we? Simple file system also means it's easier for you to chroot as well.
+### Booster instead of mkinitcpio
+This one is spicy but I believe mkinitcpio is way too slow to boot and generating pacman hook and stuff. To give you an idea, **stock booster saves you 3 seconds boot time**. So instead of manually shaving mkinitcpio like a mad man, you just keep it simple.
+### Zram instead of swap partition
+It works so why not?
+### Niri + Noctalia + ly + Thunar
+I believe tools should be simple and effective while get out of users way. These are great modular tools that have clear jobs.
+
+## Choose Method
+### Arch Live ISO + SSH
+Believe me, we are doing lots of manual configuration here. So I strongly recommend to SSH if you are using Arch live iso.
+### CachyOS live ISO
+CachyOS live iso already have graphical environment for you to browse this page alongside easy way for you to copy paste stuff. This make SSH much less appealing but the "downside" is that you are not using Arch official iso. 
  
 ## Installing Base System
 We are not using archinstall or any GUI installer. It's manual time.
@@ -37,8 +50,12 @@ We are not using archinstall or any GUI installer. It's manual time.
 ### Connect to internet
 Follow arch wiki I cba to explain here
 
-### Making live iso to recognize xfs
-Since we are using XFS as root partition, we need to make sure THIS live iso recognizes it
+### Update system clock
+```
+timedatectl
+```
+### Optional: Install XFS tools in live ISO for SSH method
+Since we are using XFS as root partition, install xfsprogs to live Arch iso. This is not needed for CachyOS ive ISO however.
 ```
 pacman -S xfsprogs
 ```
