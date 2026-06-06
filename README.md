@@ -30,8 +30,11 @@ We need one of these:
 ## Installing Base System
 We are not using archinstall or any GUI installer. It's manual time.
 
-### Connect to internet and update system clock
-Follow arch wiki
+### Connect to internet
+Follow arch wiki I cba to explain here
+
+### Update system clock
+```timedatectl```
 
 ### Making live iso to recognize xfs
 Since we are using XFS as root partition, we need to make sure system recognizes it
@@ -72,14 +75,123 @@ mount /dev/root_partition /mnt
 ```
 Mount ESP
 ```
-mount --mkdir .dev/ESP /mnt/boot
+mount --mkdir /dev/ESP /mnt/boot
 ```
 
 ### Pacstrap
-This is very important. Do not miss any of these packages
+This is very important. Do not miss any of these packages (notes below)
 ```
-pacstrap -K /mnt base linux linux-firmware sof-firmware booster base-devel sudo nano networkmanager efibootmgr
+pacstrap -K /mnt base linux linux-firmware sof-firmware booster base-devel sudo nano networkmanager efibootmgr fish amd-ucode
 ```
-You may need `sof-firmware` if you are using laptops or handhelds. If you are not whether you need it or not, keep it.
+Note:
+- You may need `sof-firmware` if you are using laptops or handhelds. If you are not whether you need it or not, keep it.
+- I also include `fish` because it's my preferred user shell. You may use `zsh` instead if you want or none if you prefer good ol' `bash`.
+- Pick `amd-ucode` if you have AMD CPU. Pick `intel-ucode` if you have Intel CPU.
+
+### Fstab
+```
+genfstab -U /mnt >> /mnt/etc/fstab
+```
+
+### Chroot
+```
+arch-chroot /mnt
+```
+
+### Time
+```
+ln -sf /usr/share/zoneinfo/Area/Location /etc/localtime
+```
+Put appropriate timezone here. See arch wiki to know how.
+
+```
+hwclock --systohc
+```
+
+### Locale
+```
+nano /etc/locale.gen
+```
+uncomment any locale you want to generate
+
+```
+nano /etc/locale.conf
+```
+Edit locales config here
+a single line of `LANG=en_US.UTF-8` works if you are lazy
+
+### Hostname
+```
+nano /etc/hostname
+```
+Whatever you want here
+
+### Initramfs
+Here's where we deviate from Arch Wiki. Run this
+```
+/usr/lib/booster/regenerate_images
+```
+This will create appropriate booster images
+
+### Bootloader
+Install systemd boot first
+```
+bootctl install
+```
+
+Check root partition UUID
+```
+blkid`
+```
+then copy paste it somewhere
+
+Make an entry manually for now. We will have tool to automate this later
+```
+nano /boot/loader/entries/arch.conf
+```
+Then paste this:
+```
+title Arch Linux
+linux /vmlinuz-linux
+initrd /amd-ucode.img
+initrd /booster-linux.img
+options root=UUID=INSERT ROOT UUID HERE rw
+```
+then 
+```
+nano /boot/loader/loader.conf
+```
+put
+```
+Default arch.conf
+```
+We will optimize these later. We just want system that boots.
+
+### User Management
+Make sudo work.
+```
+EDITOR=nano visudo
+```
+uncomment this line
+```
+%wheel ALL=(ALL:ALL) ALL
+```
+
+Add your user, `tungnon` is user I am using
+```
+useradd -m -G wheel -s fish tungnon
+```
+
+Set root password
+```
+passwd
+```
+
+Set user password
+```
+passwd tungnon
+```
+
+Then reboot
 
 
