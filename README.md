@@ -3,19 +3,19 @@
 # How I install Arch Linux
 
 ## Intro
-I suck at grammar and I am not asking AI to help. So yeah, deal with imperfect writing. Anyway, this is how I setup my Arch Linux. it is very far from "cultural Arch" but it works for me. Feel free to follow or use this as a baseline if you wish. This assumes you already know how to install Arch manually. If you are wonder exact step details: go read Arch Wiki.
+I suck at grammar and I am not asking AI to help. So yeah, deal with imperfect writing. Anyway, this is how I setup my Arch Linux. it is very far from "cultural Arch" but it works for me. Feel free to follow or use this as a baseline if you wish. This assumes you already know how to install Arch manually. **If you do not know why you are doing any of these, this page isn't for you and install CachyOS or vanilla Arch via archinstall instead.**
 
 ## Goal
 - Distro: Arch Linux
 - Kernel: CachyOS kernel (CachyOS LTS is also optional choice)
-- Repos: Core + Extra + Multilib + CachyOS repos (So we can enjoy optimized binaries)
-- Initramfs: Booster (for my setup Booster is fast simple minimal and bootable)
-- Bootloader: systemd-boot (minimal bootloader for UEFI system)
-- Filesystem: XFS (Simple, fast, and reliable)
+- Repos: Core + Extra + Multilib + CachyOS repos 
+- Initramfs: Booster 
+- Bootloader: systemd-boot 
+- Filesystem: XFS 
 - Swap: zram
 - AUR Helper: paru
-- WM: niri (We are not going to do full DE here)
-- Shell: Noctalia V5 (this also handles wallpaper polkit notif and more)
+- WM: niri 
+- Shell: Noctalia V5 
 - Display Manager: ly
 - File Manager: Thunar
 - Desktop Portal: gtk and gnome (Nautilus won't be on our system)
@@ -23,6 +23,8 @@ I suck at grammar and I am not asking AI to help. So yeah, deal with imperfect w
 - Archive Managers: XArchiver
 - Terminal Emulators: Kitty (Alacritty is also great here)
 - Theming: nwg-look qt5ct qt6ct darkly adw-gtk-theme
+### Goal Explanation
+WIP
 
 ## Choose Live ISO
 We need one of these:
