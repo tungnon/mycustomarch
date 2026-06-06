@@ -1,7 +1,9 @@
+# This is still WIP
+
 # How I install Arch Linux
 
 ## Intro
-I suck at grammar and I am not asking AI to help. So yeah, deal with imperfect writing. Anyway, this is how I setup my Arch Linux. it is very far from "cultural Arch" but it works for me. Feel free to follow or use this ase baseline if you wish. This assumes you already know how to install Arch manually. If you are wonder exact step details: go read Arch Wiki.
+I suck at grammar and I am not asking AI to help. So yeah, deal with imperfect writing. Anyway, this is how I setup my Arch Linux. it is very far from "cultural Arch" but it works for me. Feel free to follow or use this as a baseline if you wish. This assumes you already know how to install Arch manually. If you are wonder exact step details: go read Arch Wiki.
 
 ## Goal
 - Distro: Arch Linux
@@ -33,11 +35,8 @@ We are not using archinstall or any GUI installer. It's manual time.
 ### Connect to internet
 Follow arch wiki I cba to explain here
 
-### Update system clock
-```timedatectl```
-
 ### Making live iso to recognize xfs
-Since we are using XFS as root partition, we need to make sure system recognizes it
+Since we are using XFS as root partition, we need to make sure THIS live iso recognizes it
 ```
 pacman -S xfsprogs
 ```
@@ -81,12 +80,13 @@ mount --mkdir /dev/ESP /mnt/boot
 ### Pacstrap
 This is very important. Do not miss any of these packages (notes below)
 ```
-pacstrap -K /mnt base linux linux-firmware sof-firmware booster base-devel sudo nano networkmanager efibootmgr fish amd-ucode
+pacstrap -K /mnt base linux linux-firmware sof-firmware booster base-devel sudo nano networkmanager efibootmgr fish amd-ucode xfsprogs
 ```
 Note:
 - You may need `sof-firmware` if you are using laptops or handhelds. If you are not whether you need it or not, keep it.
 - I also include `fish` because it's my preferred user shell. You may use `zsh` instead if you want or none if you prefer good ol' `bash`.
 - Pick `amd-ucode` if you have AMD CPU. Pick `intel-ucode` if you have Intel CPU.
+- We will handle CachyOS stuff later once we boot into our system. For now vanilla arch kernel would do.
 
 ### Fstab
 ```
@@ -112,12 +112,14 @@ hwclock --systohc
 ```
 nano /etc/locale.gen
 ```
-uncomment any locale you want to generate
-
+uncomment any locale you want to generate then...
+```
+locale-gen
+```
+Edit locales config here
 ```
 nano /etc/locale.conf
 ```
-Edit locales config here
 a single line of `LANG=en_US.UTF-8` works if you are lazy
 
 ### Hostname
@@ -141,7 +143,7 @@ bootctl install
 
 Check root partition UUID
 ```
-blkid`
+blkid
 ```
 then copy paste it somewhere
 
@@ -157,13 +159,14 @@ initrd /amd-ucode.img
 initrd /booster-linux.img
 options root=UUID=INSERT ROOT UUID HERE rw
 ```
+Again, use `intel-ucode.img` instead if you have intel CPU
 then 
 ```
 nano /boot/loader/loader.conf
 ```
 put
 ```
-Default arch.conf
+default arch.conf
 ```
 We will optimize these later. We just want system that boots.
 
@@ -179,7 +182,7 @@ uncomment this line
 
 Add your user, `tungnon` is user I am using
 ```
-useradd -m -G wheel -s fish tungnon
+useradd -m -G wheel -s /bin/fish tungnon
 ```
 
 Set root password
@@ -190,6 +193,11 @@ passwd
 Set user password
 ```
 passwd tungnon
+```
+
+### Enabling Internet
+```
+systemctl enable NetworkManager
 ```
 
 Then reboot
