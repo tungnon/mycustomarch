@@ -27,14 +27,18 @@ I suck at grammar and I am not asking AI to help. So yeah, deal with imperfect w
 ## Goal Explanation
 ### CachyOS stuff
 I believe we should fully utilize our premium CPU that we paid. So optimized binaries are nice to have even if it means only +10% performance max. Also, custom kernel that targets desktop instead of global system is really nice to have. Overall it's just free upgrade over stock Arch binaries and Arch kernel.
-### Systemd Boot
-I assume you should already have UEFI. If not, enable it first. If you can't your firmware to be UEFI at all, then this guide isn't for you.
-### XFS as file system
-I believe XFS is the most simple and efficient file system. Sure no snapshots no advanced feature and you can't shrink it but who cares. Let's keep it simple shall we? Simple file system also means it's easier for you to chroot as well.
-### Booster instead of mkinitcpio
-This one is spicy but I believe mkinitcpio is way too slow to boot and generating pacman hook and stuff. To give you an idea, **stock booster saves you 3 seconds boot time**. So instead of manually shaving mkinitcpio like a mad man, you just keep it simple.
+### systemd-boot + XFS + Booster
+This trio are very great together for "fast, simple, minimal, and get out of my way" components.
+- The trio emphasize on keeping it simple stupid philosophy, this means there are only few stuff you have to worry about in long run, which is good if you prefer direct manual intervention.
+- EXT4 or XFS works as both are simple file systems with no features which we may not want in the first place. EXT4 is technically more documented and can be shrunk, but I play games and huge filesize transactions appeals me more. Thus, XFS is my choice. 
+- Booster is a simple, fast, and minimal initramfs generator. Initramfs images it generates are stupidly small compared to mkinitcpio. Not only that, it is also fast to boot and capable of auto generating initrd images as well just like mkinitcpio (except it is much faster). To give you an idea, **stock booster saves us 3 seconds boot time**.
+- Booster only supports systemd-boot and rEFInd, both of which are not known for btrfs snapshots integration (I know systemd boot snapshots exist on OpenSUSE but this is arch we are using).
+- I pick systemd-boot instead of rEFInd because I am more familiar with it, it's more simple as well. if I set timeout to be 0, then it wastes less than a second on the bootloader.
+- This combo is definitely not viable for btrfs snapshots users at all (in case it isn't obvious already). If you value btrfs snapshots, I suggest you to install CachyOS or using archinstall script to save your sanity.
 ### Zram instead of swap partition
 It works so why not?
+### ly
+I believe login manager should only does one thing, login into session. it is fast, minimal, and simple.
 ### Niri + Noctalia + ly + Thunar
 I believe tools should be simple and effective while get out of users way. These are great modular tools that have clear jobs.
 
