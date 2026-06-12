@@ -108,8 +108,8 @@ systemctl enable NetworkManager
 But we are not done yet. We are only doing bare minimum here....
 
 ## Installing Kernel, Repos, Initramfs, and Bootloader
+Please read CachyOS wiki here while following steps from now on : https://wiki.cachyos.org/features/optimized_repos/#adding-our-repositories-to-an-existing-arch-linux-install
 ### Enabling CachyOS repos
-Please read this here while following steps from here: https://wiki.cachyos.org/features/optimized_repos/#adding-our-repositories-to-an-existing-arch-linux-install
 ```
 curl https://mirror.cachyos.org/cachyos-repo.tar.xz -o cachyos-repo.tar.xz
 tar xvf cachyos-repo.tar.xz && cd cachyos-repo
@@ -174,6 +174,8 @@ Run this
 This will create appropriate booster images
 
 ### Bootloader Configuration
+See here for more info: https://wiki.cachyos.org/configuration/boot_manager_configuration/
+
 Edit `/etc/sdboot-manage.conf`
 ```
 micro /etc/sdboot-manage.conf
