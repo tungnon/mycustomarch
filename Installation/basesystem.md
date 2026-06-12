@@ -105,7 +105,7 @@ systemctl enable NetworkManager
 
 But we are not done yet. We are only doing bare minimum here....
 
-## Installing CachyOS components on base system
+## Installing Kernel, Repos, Initramfs, and Bootloader
 ### Enabling CachyOS repos
 Please read this here while following steps from here: https://wiki.cachyos.org/features/optimized_repos/#adding-our-repositories-to-an-existing-arch-linux-install
 ```

@@ -49,7 +49,7 @@ The rest is only a matter of preferences which you may use base installation for
 
 ## Installation Steps
 ### Base Install
-(insert link here)
+https://github.com/tungnon/mycustomarch/blob/main/Installation/basesystem.md
 ### Desktop Setup
 (insert link here)
 ### My dots
