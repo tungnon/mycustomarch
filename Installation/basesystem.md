@@ -1,7 +1,7 @@
 # Base System Installation
 
 ## Preparation
-### Getting EndeavourOS
+### Getting EndeavourOS Live ISO
 Yup, we will use that one. Why? It provides graphical working live environment so you can copy paste from browser. And during pacstrap it won't bring CachyOS stuff here (you do not want that).
 ### Ranking Arch Mirror
 When EndeavourOS helper windows pops up, click to update Arch mirrors. Ignore EndeavoruOS mirror, we don't care.
