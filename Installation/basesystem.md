@@ -14,12 +14,14 @@ Partition scheme slightly differs depending on what you want:
 Use `cfdisk`. You would want partitioning to be like this:
 - ESP: 1 GB 
 - root_partition: the rest 
+
 ESP with booster only needs 100 MB. But we are reserving 1 GB in case you want to go back to mkinitcpio as XFS can't be shrunk.
 
 ### Partition the disks (EXT4 Root Parition)
 Use `cfdisk`. You would want partitioning to be like this:
 - ESP: 100-250 MB 
 - root_partition: the rest 
+
 Depends on available disk space, you may leave ESP to be more comfortable to 250 MB if you want to. But honestly 100 MB should be enough.
 
 ### Formatting the partitions
