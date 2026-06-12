@@ -146,7 +146,7 @@ pacman -Scc   # Confirm with 'y' twice
 pacman -Sy
 pacman -Qqn | pacman -S -
 ```
-Continue from here if your CPU is not znver4/znver5 compatible.
+**Continue from here if your CPU is not znver4/znver5 compatible.**
 
 ### Enabling Multilib Repo
 Still on `etc/pacman.conf`, uncomment multilib lines here:
