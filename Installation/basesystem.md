@@ -202,6 +202,8 @@ sdboot-manage gen
 ```
 instead
 
+Simple right? We could do these manually but we have shit to do.
+
 ## User Management
 ### Root password
 ```
