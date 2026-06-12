@@ -51,6 +51,6 @@ The rest is only a matter of preferences which you may use base installation for
 ### Base Install
 https://github.com/tungnon/mycustomarch/blob/main/Installation/basesystem.md
 ### Desktop Setup
-(insert link here)
+https://github.com/tungnon/mycustomarch/blob/main/Installation/desktop.md
 ### My dots
 (insert link here)
