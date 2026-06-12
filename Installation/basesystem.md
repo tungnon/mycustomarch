@@ -4,20 +4,20 @@
 ### Getting EndeavourOS Live ISO
 Yup, we will use that one. Why? It provides graphical working live environment so you can copy paste from browser. And during pacstrap it won't bring CachyOS stuff here (you do not want that).
 ### Ranking Arch Mirror
-When EndeavourOS helper windows pops up, click to update Arch mirrors. Ignore EndeavoruOS mirror, we don't care.
+When EndeavourOS helper windows pops up, click to update Arch mirrors. Ignore EndeavourOS mirror, we don't care.
 ### Get to work
 Launch Konsole then type `sudo su`. Reading Arch Wiki alongside this guide is recommended for clear comparison here. We can see differences clearly this way.
 
 ## Installing Base System
 Partition scheme slightly differs depending on what you want:
-### Partition the disks (XFS Root Parition)
+### Partition the disks (XFS Root Partition)
 Use `cfdisk`. You would want partitioning to be like this:
 - ESP: 1 GB 
 - root_partition: the rest 
 
 ESP with booster only needs 100 MB. But we are reserving 1 GB in case you want to go back to mkinitcpio as XFS can't be shrunk.
 
-### Partition the disks (EXT4 Root Parition)
+### Partition the disks (EXT4 Root Partition)
 Use `cfdisk`. You would want partitioning to be like this:
 - ESP: 100-250 MB 
 - root_partition: the rest 
@@ -48,7 +48,7 @@ Mount ESP
 mount --mkdir /dev/ESP /mnt/boot
 ```
 
-##@ Pacstrap
+### Pacstrap
 This is very important. Do not miss any of these packages (notes below)
 ```
 pacstrap -K /mnt base linux-firmware sof-firmware booster base-devel sudo micro networkmanager efibootmgr amd-ucode xfsprogs
@@ -60,7 +60,7 @@ Note:
 - Pick `amd-ucode` if you have AMD CPU. Pick `intel-ucode` if you have Intel CPU.
 - `xfsprogs` can be skipped if you prefer ext4
 
-##@ Fstab
+### Fstab
 ```
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
@@ -82,7 +82,7 @@ hwclock --systohc
 
 ### Locale
 ```
-nano /etc/locale.gen
+micro /etc/locale.gen
 ```
 uncomment any locale you want to generate then...
 ```
@@ -90,13 +90,13 @@ locale-gen
 ```
 Edit locales config here
 ```
-nano /etc/locale.conf
+micro /etc/locale.conf
 ```
 a single line of `LANG=en_US.UTF-8` works if you are lazy
 
 ### Hostname
 ```
-nano /etc/hostname
+micro /etc/hostname
 ```
 Whatever you want here
 
@@ -223,7 +223,6 @@ Do
 ```
 EDITOR=micro visudo
 ```
-
 
 uncomment this line
 ```
