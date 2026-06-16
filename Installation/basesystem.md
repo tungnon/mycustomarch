@@ -183,10 +183,11 @@ Then `pacman -Syu` to sync mirrorlist
 
 ## Installing CachyOS components
 ```
-pacman -S linux-cachyos linux-cachyos-lts systemd-boot-manager cachyos-settings chwd
+pacman -S linux-cachyos linux-cachyos-lts systemd-boot-manager cachyos-settings chwd downgrade
 ```
 - Skip `linux-cachyos-lts` if you don't care about fallback kernel. Skip `linux-cachyos` if you prefer LTS kernel for some reasons.
 - CachyOS settings will automatically handle zram and other nice stuff for us. These are nice improvements. Skip if you prefer vanilla Linux behavior.
+- `downgrade` is nice to have to rollback specific packages to previous version and pin it until upstream fixes
 
 ## Generating Initramfs
 Run this
