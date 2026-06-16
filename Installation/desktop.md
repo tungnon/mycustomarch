@@ -1,4 +1,5 @@
 # Desktop Installation
+If any of these packages are not found, read base system page first
 
 ## Easy Mode
 If you just want stuff to work after these steps, login on TTY then do:
