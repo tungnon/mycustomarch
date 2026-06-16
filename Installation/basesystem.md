@@ -256,7 +256,7 @@ uncomment this line
 
 ## Installing Drivers
 ```
-chwd
+chwd -a
 ```
 This will handles every necessary drivers for you
 
