@@ -8,7 +8,7 @@ When EndeavourOS helper windows pops up, click to update Arch mirrors. Ignore En
 ### Get to work
 Launch Konsole then type `sudo su`. Reading Arch Wiki alongside this guide is recommended for clear comparison here. We can see differences clearly this way.
 
-## Installing Base System
+## Partitioning
 Partition scheme slightly differs depending on what you want:
 ### Partition the disks (XFS Root Partition)
 Use `cfdisk`. You would want partitioning to be like this:
@@ -24,7 +24,7 @@ Use `cfdisk`. You would want partitioning to be like this:
 
 Depends on available disk space, you may leave ESP to be more comfortable to 250 MB if you want to. But honestly 100 MB should be enough.
 
-### Formatting the partitions
+## Formatting the partitions
 Format root partition for XFS Partition
 ```
 mkfs.xfs /dev/root_partition
@@ -38,7 +38,7 @@ Format ESP
 mkfs.fat -F 32 /dev/ESP
 ```
 
-### Mount filesystems
+## Mount filesystems
 Mount root partition first
 ```
 mount /dev/root_partition /mnt
@@ -48,7 +48,7 @@ Mount ESP
 mount --mkdir /dev/ESP /mnt/boot
 ```
 
-### Pacstrap
+## Pacstrap
 This is very important. Do not miss any of these packages (notes below)
 ```
 pacstrap -K /mnt base linux-firmware sof-firmware booster base-devel sudo micro networkmanager efibootmgr amd-ucode xfsprogs
@@ -60,17 +60,17 @@ Note:
 - Pick `amd-ucode` if you have AMD CPU. Pick `intel-ucode` if you have Intel CPU.
 - `xfsprogs` can be skipped if you prefer ext4
 
-### Fstab
+## Fstab
 ```
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-### Chroot
+## Chroot
 ```
 arch-chroot /mnt
 ```
 
-### Timezones
+## Timezones
 ```
 ln -sf /usr/share/zoneinfo/Area/Location /etc/localtime
 ```
@@ -94,22 +94,24 @@ micro /etc/locale.conf
 ```
 a single line of `LANG=en_US.UTF-8` works if you are lazy
 
-### Hostname
+## Hostname
 ```
 micro /etc/hostname
 ```
 Whatever you want here
 
-### Enabling Internet
+## Enabling Internet
 ```
 systemctl enable NetworkManager
 ```
 
 But we are not done yet. We are only doing bare minimum here....
 
-## Installing Kernel, Repos, Initramfs, and Bootloader
-Please read CachyOS wiki here while following steps from now on : https://wiki.cachyos.org/features/optimized_repos/#adding-our-repositories-to-an-existing-arch-linux-install
+## Configurating Repos
+This is where the fun begins :)
+
 ### Enabling CachyOS repos
+Please read CachyOS wiki here while following steps from now on : https://wiki.cachyos.org/features/optimized_repos/#adding-our-repositories-to-an-existing-arch-linux-install
 ```
 curl https://mirror.cachyos.org/cachyos-repo.tar.xz -o cachyos-repo.tar.xz
 tar xvf cachyos-repo.tar.xz && cd cachyos-repo
@@ -154,26 +156,45 @@ Still on `etc/pacman.conf`, uncomment multilib lines here:
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 ```
-Save and exit. We are done here. Feel free to do `pacman -Syyu` to ensure multilib repo is loaded.
+Then `pacman -Syu` to sync mirrorlist
 
-Also I know this isn't CachyOS stuff but if we are going to edit pacman.conf anyway, why not do it in one go?
+### Enabling Chaotic AUR Repo
+Read here for more info: https://aur.chaotic.cx/
 
-### Injecting CachyOS Components
-This is where we will have our fun:
+Retriving keys
 ```
-pacman -S linux-cachyos linux-cachyos-lts systemd-boot-manager cachyos-settings
+pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+pacman-key --lsign-key 3056513887B78AEB
+```
+
+Installing Chaotic Keyrings and Chaotic Mirrorlist
+```
+pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+```
+
+Put this at **the end of /etc/pacman.conf**
+```
+[chaotic-aur]
+Include = /etc/pacman.d/chaotic-mirrorlist
+```
+Then `pacman -Syu` to sync mirrorlist
+
+## Installing CachyOS components
+```
+pacman -S linux-cachyos linux-cachyos-lts systemd-boot-manager cachyos-settings chwd
 ```
 - Skip `linux-cachyos-lts` if you don't care about fallback kernel. Skip `linux-cachyos` if you prefer LTS kernel for some reasons.
 - CachyOS settings will automatically handle zram and other nice stuff for us. These are nice improvements. Skip if you prefer vanilla Linux behavior.
 
-### Initramfs
+## Generating Initramfs
 Run this
 ```
 /usr/lib/booster/regenerate_images
 ```
 This will create appropriate booster images
 
-### Bootloader Configuration
+## Bootloader Configuration
 See here for more info: https://wiki.cachyos.org/configuration/boot_manager_configuration/
 
 Edit `/etc/sdboot-manage.conf`
@@ -233,5 +254,11 @@ uncomment this line
 %wheel ALL=(ALL:ALL) ALL
 ```
 
-### Reboot
+## Installing Drivers
+```
+chwd
+```
+This will handles every necessary drivers for you
+
+## Reboot
 Base installation is done! You are done here if you don't care about desktop sides of thing.
