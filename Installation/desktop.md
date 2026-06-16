@@ -10,6 +10,7 @@ sudo pacman -S plasma-meta dolphin ark kio-extras helium-browser-bin octopi baza
 - Don't add `octopi` and/or `bazaar` if you do not want GUI app manager
 - Don't include `cachyos-hello` if you don't care about CachyOS tools
 - Replace `gwenview` `haruna` `okular` with other apps if needed
+- Skip `arch-update` if you prefer update manually for some reasons
 - AUR helper like `paru` maybe needed if something you want is not found on Chaotic AUR at all
 
 Then
