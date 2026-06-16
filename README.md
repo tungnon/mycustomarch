@@ -13,7 +13,7 @@ This assumes if you have UEFI. If you have only BIOS, close this page.
 - Distro: Arch Linux
 - Kernel: CachyOS kernel and CachyOS LTS kernel
 - CLI text editor: micro
-- Repos: Core + Extra + Multilib + CachyOS repos 
+- Repos: Core + Extra + Multilib + CachyOS + CachyOS Core + CachyOS Extra + Chaotic AUR
 - Initramfs: Booster 
 - Bootloader: systemd-boot 
 - Filesystem: XFS or EXT4
@@ -27,15 +27,12 @@ This assumes if you have UEFI. If you have only BIOS, close this page.
 - GUI Text Editor: Mousepad
 - Archive Managers: XArchiver
 - Music Player: Audacious
-- Image Viewer: qimgv
-- Video Viewer: Celluloid
+- Image + Video Viewer: qimgv
 - Terminal Emulator: foot
 - Terminal Shell: fish
 - AUR Helper: paru
 
 ## Goal Explanation
-### CachyOS stuff
-I believe we should fully utilize our premium CPU that we paid. So optimized binaries are nice to have even if it means only +10% performance max. Also, custom kernel that targets desktop instead of global system is really nice to have. Overall it's just free upgrade over stock Arch binaries and Arch kernel.
 ### systemd-boot + XFS + Booster
 This trio are very great together for "fast, simple, minimal, and get out of my way" components.
 - The trio emphasize on keeping it simple stupid philosophy, this means there are only few stuff you have to worry about in long run, which is good if you prefer direct manual intervention.
@@ -44,6 +41,10 @@ This trio are very great together for "fast, simple, minimal, and get out of my 
 - Booster only supports systemd-boot and rEFInd, both of which are not known for btrfs snapshots integration (I know systemd boot snapshots exist on OpenSUSE but this is arch we are using).
 - I pick systemd-boot instead of rEFInd because I am more familiar with it, it's more simple as well. if I set timeout to be 0, then it wastes less than a second on the bootloader.
 - This combo is definitely not viable for btrfs snapshots users at all (in case it isn't obvious already). If you value btrfs snapshots, I suggest you to install CachyOS or using archinstall script to save your sanity.
+### CachyOS stuff
+I believe we should fully utilize our premium CPU that we paid. So optimized binaries are nice to have even if it means only +10% performance max. Also, custom kernel that targets desktop instead of global system is really nice to have. It's just free upgrade over stock Arch binaries and Arch kernel.
+### Chaotic AUR
+I trust them so I outsourced my work to Chaotic AUR team. Simple as that.
 ### The rest
 The rest is only a matter of preferences which you may use base installation for something else. Maybe even KDE Plasma, GNOME, XFCE, hyprland. Whatever works.
 
