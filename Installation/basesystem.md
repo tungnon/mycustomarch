@@ -123,7 +123,8 @@ Very important, if you are using AMD CPU, please do this here to check:
 ```
 gcc -march=native -Q --help=target 2>&1 | grep -Po "^\s+-march=\s+\K(\w+)\$"
 ```
-If your CPU is incompatible or you are using Intel CPU then skip to the next step. If the output is znver4 or znver5, then proceed:
+**If your CPU is incompatible or you are using Intel CPU then skip to the next step.** 
+If the output is znver4 or znver5, then proceed:
 
 Edit `/etc/pacman.conf`
 ```
