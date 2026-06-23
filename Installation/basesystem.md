@@ -289,4 +289,4 @@ chwd -a
 This will handles every necessary drivers for us
 
 ## Reboot
-Base installation is done! You are done here if you don't care about desktop sides of thing.
+Base installation is done! If you want desktop that just works, refer to [easy mode](https://github.com/tungnon/mycustomarch/blob/main/Installation/easy.md). Otherwise, follow desktop setup section.
