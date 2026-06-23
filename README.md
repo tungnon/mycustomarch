@@ -50,7 +50,9 @@ The rest is only a matter of preferences which you may use base installation for
 ## Installation Steps
 ### Base Install
 https://github.com/tungnon/mycustomarch/blob/main/Installation/basesystem.md
-### Desktop Setup
-https://github.com/tungnon/mycustomarch/blob/main/Installation/desktop.md
+### Desktop Setup: KDE Plasma
+https://github.com/tungnon/mycustomarch/blob/main/Installation/easy.md
+### Desktop Setup: niri + Noctalia V5
+WIP
 ### My dots
 (insert link here)
