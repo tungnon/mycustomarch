@@ -1,12 +1,17 @@
 # Base System Installation
+There are two ways to prepare live environment: EndeavourOS Live ISO or SSH into Arch Live ISO
 
-## Preparation
+## Preparation (EndeavourOS Live ISO)
+Recommended if you only have one device available. If you have two or more devices and you know how to SSH, use Arch ISO instead.
 ### Getting EndeavourOS Live ISO
 Yup, we will use that one. Why? It provides graphical working live environment so you can copy paste from browser. And during pacstrap it won't bring CachyOS stuff here (you do not want that).
 ### Ranking Arch Mirror
 When EndeavourOS helper windows pops up, click to update Arch mirrors. Ignore EndeavourOS mirror, we don't care.
 ### Get to work
 Launch Konsole then type `sudo su`. Reading Arch Wiki alongside this guide is recommended for clear comparison here. We can see differences clearly this way.
+
+## Preparation (Arch Live ISO)
+You ssh into live ISO. If you know, good. If you don't, look it up or use above method instead.
 
 ## Partitioning
 Partition scheme slightly differs depending on what you want:
@@ -48,17 +53,14 @@ Mount ESP
 mount --mkdir /dev/ESP /mnt/boot
 ```
 
-## Pacstrap
-This is very important. Do not miss any of these packages (notes below)
+## Pacstrap for bare minimum stuff
 ```
-pacstrap -K /mnt base linux-firmware sof-firmware booster base-devel sudo micro networkmanager efibootmgr amd-ucode xfsprogs
+pacstrap -K /mnt base xfsprogs micro
 ```
 Note:
-- We do not need `linux` here. We will install CachyOS kernel later.
-- You may need `sof-firmware` if you are using laptops or handhelds. If you are not whether you need it or not, keep it.
-- If you prefer "less bloated" editor than `micro` then `vim` `nano` `nvim` whatever works. Just get at least one.
-- Pick `amd-ucode` if you have AMD CPU. Pick `intel-ucode` if you have Intel CPU.
 - `xfsprogs` can be skipped if you prefer ext4
+- If you prefer "less bloated" editor than `micro` then `vim` `nano` `nvim` whatever works. Just get at least one.
+- We only need these for now
 
 ## Fstab
 ```
@@ -107,8 +109,31 @@ systemctl enable NetworkManager
 
 But we are not done yet. We are only doing bare minimum here....
 
-## Configurating Repos
+## Configurating Pacman
 This is where the fun begins :)
+
+### Spice Up Pacman
+Edit `pacman.conf`
+```
+micro /etc/pacman.conf
+```
+Change `# Misc options` section to be like this:
+```
+# Misc options
+#UseSyslog
+Color
+#NoProgressBar
+#PrettyProgressBar
+ILoveCandy
+CheckSpace
+#VerbosePkgLists
+ParallelDownloads = 20
+DownloadUser = alpm
+#DisableSandbox
+#DisableSandboxFilesystem
+#DisableSandboxSyscalls
+```
+If you think 20 is too much, 15 or 10 is fine.
 
 ### Enabling CachyOS repos
 Please read CachyOS wiki here while following steps from now on : https://wiki.cachyos.org/features/optimized_repos/#adding-our-repositories-to-an-existing-arch-linux-install
@@ -126,10 +151,7 @@ gcc -march=native -Q --help=target 2>&1 | grep -Po "^\s+-march=\s+\K(\w+)\$"
 **If your CPU is incompatible or you are using Intel CPU then skip to the next step.** 
 If the output is znver4 or znver5, then proceed:
 
-Edit `/etc/pacman.conf`
-```
-micro /etc/pacman.conf
-```
+Edit `pacman.conf`
 Replace V3/V4 repos with: 
 ```
 [cachyos-znver4]
@@ -152,7 +174,7 @@ pacman -Qqn | pacman -S -
 **Continue from here if your CPU is not znver4/znver5 compatible.**
 
 ### Enabling Multilib Repo
-Still on `etc/pacman.conf`, uncomment multilib lines here:
+Still on `pacman.conf`, uncomment multilib lines here:
 ```
 [multilib]
 Include = /etc/pacman.d/mirrorlist
@@ -181,13 +203,17 @@ Include = /etc/pacman.d/chaotic-mirrorlist
 ```
 Then `pacman -Syu` to sync mirrorlist
 
-## Installing CachyOS components
+## The "REAL pacstrap"
 ```
-pacman -S linux-cachyos linux-cachyos-lts systemd-boot-manager cachyos-settings chwd downgrade
+pacman -S linux-cachyos linux-cachyos-lts linux-firmware sof-firmware base-devel booster sudo networkmanager efibootmgr systemd-boot-manager cachyos-settings chwd downgrade amd-ucode ffmpegthumbnailer
 ```
-- Skip `linux-cachyos-lts` if you don't care about fallback kernel. Skip `linux-cachyos` if you prefer LTS kernel for some reasons.
-- CachyOS settings will automatically handle zram and other nice stuff for us. These are nice improvements. Skip if you prefer vanilla Linux behavior.
+- Skip `linux-cachyos-lts` if you don't care about fallback kernel. Skip `linux-cachyos` if you prefer LTS kernel for some reasons
+- If you don't know whether you need `sof-firmware` or not, keep it
+- `systemd-boot-manager` is a nice tool to automate systemd-boot. We could do it manually but who have time for that?
+- `cachyos-settings` will automatically handle zram and other nice improvement for us
 - `downgrade` is nice to have to rollback specific packages to previous version and pin it until upstream fixes
+- Pick `amd-ucode` if you have AMD CPU. Pick `intel-ucode` if you have Intel CPU.
+- `ffmpegthumbnailer` also pulls `ffpmeg` which provide basic needed codecs  
 
 ## Generating Initramfs
 Run this
