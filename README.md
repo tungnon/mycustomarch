@@ -3,13 +3,9 @@
 # How I install Arch Linux
 
 ## Intro
-I suck at grammar and I am not asking AI to help. So yeah, deal with imperfect writing. Anyway, this is how I setup my Arch Linux. It is very far from what you would expect from usual Arch installs. Feel free to follow or use this as a baseline if you wish. If you are going to complain, I don't care. Close this page and touch grass. It works for me.
-
-Obviously this is not for a new user and I assume you already know how to install Arch manually. **If you do not know why you are doing any of these, close this page. Install CachyOS or vanilla Arch via archinstall instead.**
+I suck at grammar and I am not asking AI to help. So yeah, deal with imperfect writing. And if you actually read this page for 5 hot seconds, it is far from what you would expect from usual Arch installs. Do not blindly follow these steps if you don't know what these mean.
 
 ## What we will get here
-### System
-This assumes if you have UEFI. If you have only BIOS, close this page.
 - Distro: Arch Linux
 - Kernel: CachyOS kernel and CachyOS LTS kernel
 - CLI text editor: micro
@@ -18,19 +14,6 @@ This assumes if you have UEFI. If you have only BIOS, close this page.
 - Bootloader: systemd-boot 
 - Filesystem: XFS or EXT4
 - zram enabled 
-
-### Userspace/Desktop
-- WM: niri 
-- Desktop Shell: Noctalia V5 
-- Login Manager: Noctalia Greeter
-- File Manager: Thunar
-- GUI Text Editor: Mousepad
-- Archive Managers: XArchiver
-- Music Player: Audacious
-- Image + Video Viewer: qimgv
-- Terminal Emulator: foot
-- Terminal Shell: fish
-- AUR Helper: paru
 
 ## Goal Explanation
 ### systemd-boot + XFS + Booster
