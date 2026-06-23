@@ -25,9 +25,10 @@ sudo systemctl enable --now plasmalogin
 - GUI text editor: `kate` - Feel free to replace it with any of your choice
 - PDF Viewer: `okular` - `mupdf` is viable lightweight alternative
 - Music Player: `elisa` - `audacious` is viable lightweight alternative
+- Office Suite: `libreoffice-fresh` - `libreoffice-still` and `onlyoffice` are viable alternatives
 - GUI package manager: `octopi` - `shelly` is viable alternative that does not use pacman
-- Flatpak store: `bazaar` - `discover` is also viable alternative that also handle flatpak alongside KDE widgets and theme updates
-- Update Notifier: `arch-update` - If `arch-update` isn't what you wanted, you may use built-in notifiers from `octopi`, `shelly` or KDE Widget `Apdatifier` or none if you wish
+- Flatpak store: `discover` - `bazaar` is viable if you prefer standalone Flatpak manager
+- Update Notifier: `arch-update` - If `arch-update` isn't what you wanted, you may use built-in notifiers from `octopi`, `shelly` or KDE Widget `Apdatifier` or none if you wish. 
 - Others: `cachyos-hello` `cachyos-kernel-manager` can be easily skipped
 - AUR helper - Any works but I prefer `paru` but it is far from necessary. `shelly` can be used as AUR manager as well.
-
+Note: `xdg-terminal-exec-git` is recommended if you use other terminal that isn't `konsole`
