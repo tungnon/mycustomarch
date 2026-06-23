@@ -31,6 +31,7 @@ sudo pacman -S gwenview haruna kate okular elisa
 - GUI text editor: `kate` - Also includes KWrite
 - PDF Viewer: `okular` 
 - Music Player: `elisa`
+
 Feel free to replace any of these with any of your choice
 
 ### Other Applications
@@ -40,4 +41,5 @@ Feel free to replace any of these with any of your choice
 - Update Notifier: `arch-update` - If `arch-update` isn't what you wanted, you may use built-in notifiers from `octopi`, `shelly` or KDE Widget `Apdatifier` or none if you wish. 
 - Others: `cachyos-hello` `cachyos-kernel-manager` can be easily skipped
 - AUR helper - Any works but I prefer `paru` but it is far from necessary. `shelly` can be used as AUR manager as well.
+
 Note: `xdg-terminal-exec-git` is recommended if you use other terminal that isn't `konsole`
