@@ -16,12 +16,6 @@ sudo systemctl enable --now plasmalogin
 Enjoy!
 
 ## Additional Applications
-### Codecs
-```
-sudo pacman -S ffmpegthumbnailer
-```
-`ffmpegthumbnailer` also pulls `ffmpeg`
-
 ### KDE Applications
 ```
 sudo pacman -S gwenview haruna kate okular elisa
