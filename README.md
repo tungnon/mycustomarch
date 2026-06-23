@@ -16,22 +16,19 @@ I suck at grammar and I am not asking AI to help. So yeah, deal with imperfect w
 - zram enabled 
 
 ## Goal Explanation
-### systemd-boot + XFS + Booster
+### systemd-boot + XFS/EXT4 + Booster
 This trio are very great together for "fast, simple, minimal, and get out of my way" components.
-- The trio emphasize on keeping it simple stupid philosophy, this means there are only few stuff you have to worry about in long run, which is good if you prefer direct manual intervention.
-- EXT4 or XFS works as both are simple file systems with no features which we may not want in the first place. EXT4 seems better if your available disk space is limited as we are installing small ESP for EXT4 users. Otherwise XFS is generally better if you are fine with root partition cannot be shrunk. 
-- Booster is a simple, fast, and minimal initramfs generator. Initramfs images it generates are stupidly small compared to mkinitcpio. Not only that, it is also fast to boot and capable of auto generating initrd images as well just like mkinitcpio (except it is much faster). To give you an idea, **stock booster saves us 3 seconds boot time**.
-- I pick systemd-boot because bootloader should be simple and fast.
-- This combo is definitely not viable for btrfs snapshots users at all (in case it isn't obvious already). If you value btrfs snapshots, I suggest you to install CachyOS or using archinstall script to save your sanity.
+- These are stupidly simple trio. Gonna love that simplicity
+- XFS or EXT4 works as both are simple file systems. Look up Arch wiki to see what they do.
+- Booster is a simple, fast, and minimal initramfs generator. Well, not only images size is riduculously small, boot time is stupidly fast as well.
+- systemd-boot is fast
 ### CachyOS stuff
-I believe we should fully utilize our premium CPU that we paid. So optimized binaries are nice to have even if it means only +10% performance max. Also, custom kernel that targets desktop instead of global system is really nice to have. It's just free upgrade over stock Arch binaries and Arch kernel.
+I have premium CPU. I don't want my paid CPU to go into waste just because I have to use generic binaries from upstream
 ### Chaotic AUR
 I trust them so I outsourced my work to Chaotic AUR team. Simple as that.
-### The rest
-The rest is only a matter of preferences which you may use base installation for something else. Maybe even KDE Plasma, GNOME, XFCE, hyprland. Whatever works.
 
 ## Installation Steps
-### Base Install
+### Base Install (Do this first)
 https://github.com/tungnon/mycustomarch/blob/main/Installation/basesystem.md
 ### Desktop Setup: KDE Plasma
 https://github.com/tungnon/mycustomarch/blob/main/Installation/easy.md
