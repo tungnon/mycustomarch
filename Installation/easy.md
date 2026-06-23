@@ -1,14 +1,15 @@
 # Easy Version: KDE Plasma
 If any of these packages are not found, read base system page first
 
-## Base KDE Plasma
+## Get Plasmas Working
+### Installing Base KDE Plasma
 ```
 sudo pacman -S plasma-meta dolphin ark kio-extras plasma-login-manager konsole
 ```
 - These are essential KDE Plasma applications. Replace `konsole` with your preferred terminal emulator if needed.
 - `plasma-meta` also pulls `discover`
 
-## Get Plasma Working
+### Enabling Plasma Login Manager
 ```
 sudo systemctl enable --now plasmalogin
 ```
