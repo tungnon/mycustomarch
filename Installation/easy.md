@@ -2,7 +2,7 @@
 If any of these packages are not found, read base system page first
 
 ## Get Plasma Working
-### Install Base KDE Plasma
+### Install base KDE Plasma
 ```
 sudo pacman -S plasma-meta dolphin ark kio-extras plasma-login-manager konsole
 ```
