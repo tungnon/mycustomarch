@@ -286,7 +286,7 @@ uncomment this line
 ```
 chwd -a
 ```
-This will handles every necessary drivers for you
+This will handles every necessary drivers for us
 
 ## Reboot
 Base installation is done! You are done here if you don't care about desktop sides of thing.
