@@ -288,5 +288,14 @@ chwd -a
 ```
 This will handles every necessary drivers for us
 
+## Enabling XFS services
+This is why XFS is superior choice of filesystem
+```
+systemctl enable xfs_scrub_all.timer
+systemctl enable xfs_healer.service
+systemctl enable fstrim.timer
+```
+Ofc if you prefer EXT4 instead, you don't get to do these. At least your documentation is better, right? Right????
+
 ## Reboot
 Base installation is done! If you want desktop that just works, refer to [easy mode](https://github.com/tungnon/mycustomarch/blob/main/Installation/easy.md). Otherwise, follow desktop setup section.
