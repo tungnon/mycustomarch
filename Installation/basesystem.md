@@ -215,7 +215,7 @@ pacman -S linux-cachyos linux-cachyos-lts linux-firmware sof-firmware base-devel
 - Pick `amd-ucode` if you have AMD CPU. Pick `intel-ucode` if you have Intel CPU.
 - `ffmpegthumbnailer` also pulls `ffpmeg` which provide basic needed codecs  
 
-## Configurating Booster
+## Configurating Booster (Optional)
 Edit `/etc/booster.yaml` 
 ```
 micro /etc/booster.yaml
@@ -300,7 +300,7 @@ chwd -a
 ```
 This will handles every necessary drivers for us
 
-## Enabling XFS services
+## Enabling XFS services (Optional)
 This is why XFS is superior choice of filesystem
 ```
 systemctl enable xfs_scrub_all.timer
