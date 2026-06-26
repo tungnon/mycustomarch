@@ -233,7 +233,7 @@ Run this
 ```
 /usr/lib/booster/regenerate_images
 ```
-This will create appropriate booster images
+This will create appropriate booster images. No, we are not doing `mkinitcpio -P` here. That's bloated
 
 ## Bootloader Configuration
 See here for more info: https://wiki.cachyos.org/configuration/boot_manager_configuration/
