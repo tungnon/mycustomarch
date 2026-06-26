@@ -213,7 +213,8 @@ pacman -S linux-cachyos linux-cachyos-lts linux-firmware sof-firmware base-devel
 - `cachyos-settings` will automatically handle zram and other nice improvement for us
 - `downgrade` is nice to have to rollback specific packages to previous version and pin it until upstream fixes
 - Pick `amd-ucode` if you have AMD CPU. Pick `intel-ucode` if you have Intel CPU.
-- `ffmpegthumbnailer` also pulls `ffpmeg` which provide basic needed codecs  
+- `ffmpegthumbnailer` also pulls `ffpmeg` which provide basic needed codecs
+- `busybox` is optional if you want extra insurance that doesn't annoy you, skip if you want to but why would you? 
 
 ## Configurating Booster (Optional)
 Edit `/etc/booster.yaml` 
