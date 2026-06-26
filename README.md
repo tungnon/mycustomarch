@@ -27,7 +27,7 @@ This trio are very great together for "fast, simple, minimal, and get out of my 
 ### CachyOS stuff
 I have premium CPU. I don't want my paid CPU to go into waste just because I have to use generic binaries from upstream
 ### Chaotic AUR
-I trust them so I outsourced my work to Chaotic AUR team. Simple as that.
+I trust them so I outsourced my work to Chaotic AUR team. And honestly, I would prefer avoid AUR like plague. So for this entire setup, the goal is real: 0 AUR.
 
 ## Installation Steps
 ### Base Install (Do this first)
