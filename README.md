@@ -19,7 +19,7 @@ I suck at grammar and I am not asking AI to help. So yeah, deal with imperfect w
 ### systemd-boot + XFS/EXT4 + Booster
 This trio are very great together for "fast, simple, minimal, and get out of my way" components.
 - These are stupidly simple trio. Gonna love that simplicity
-- XFS or EXT4 works as both are simple file systems. But honestly, if you are not a coward and deal with unshrinkable root, XFS is just faster and more reliable file system. [See here to know why](https://github.com/tungnon/mycustomarch/blob/main/Installation/basesystem.md#enabling-xfs-services)
+- XFS or EXT4 works as both are simple file systems. But honestly, if you are not a coward and deal with unshrinkable root, XFS is just faster and more reliable file system. [See here to know why](https://github.com/tungnon/mycustomarch/blob/main/Installation/basesystem.md#enabling-xfs-services). But hey, EXT4 users still demand more respect than people who "play safe" with btrfs snapshots. After all, when they are forced to chroot, they are scratching their heads figuring how to actually chroot their root
 - Booster is a simple, fast, and minimal initramfs generator. Well, not only images size is riduculously small, boot time is stupidly fast as well.
 - systemd-boot is fast
 ### CachyOS stuff
