@@ -24,7 +24,7 @@ This trio are very great together for "fast, simple, minimal, and get out of my 
   - But hey, EXT4 users still demand more respect than people who "play safe" with btrfs snapshots. After all, when they are forced to chroot, they are scratching their heads figuring how to actually chroot their root
 - Booster is a simple, fast, and minimal initramfs generator. Well, not only images size is riduculously small, boot time is stupidly fast as well.
 - systemd-boot is fast and it's easiest bootloader to work with... [especially with this](https://github.com/tungnon/mycustomarch/blob/main/Installation/basesystem.md#bootloader-configuration)
-### Micro instead of nano, vim, ni, nvim
+### Micro instead of nano, vim, vi, nvim, helix, whatever idc
 I am not a programmer and nano fucking sucks
 ### zram 
 Swap partition is bloated
