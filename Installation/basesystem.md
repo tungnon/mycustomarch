@@ -205,7 +205,7 @@ Then `pacman -Syu` to sync mirrorlist
 
 ## The "REAL pacstrap"
 ```
-pacman -S linux-cachyos linux-cachyos-lts linux-firmware sof-firmware base-devel booster sudo networkmanager efibootmgr systemd-boot-manager cachyos-settings chwd downgrade amd-ucode ffmpegthumbnailer
+pacman -S linux-cachyos linux-cachyos-lts linux-firmware sof-firmware base-devel booster sudo networkmanager efibootmgr systemd-boot-manager cachyos-settings chwd downgrade amd-ucode ffmpegthumbnailer busybox
 ```
 - Skip `linux-cachyos-lts` if you don't care about fallback kernel. Skip `linux-cachyos` if you prefer LTS kernel for some reasons
 - If you don't know whether you need `sof-firmware` or not, keep it
@@ -214,6 +214,18 @@ pacman -S linux-cachyos linux-cachyos-lts linux-firmware sof-firmware base-devel
 - `downgrade` is nice to have to rollback specific packages to previous version and pin it until upstream fixes
 - Pick `amd-ucode` if you have AMD CPU. Pick `intel-ucode` if you have Intel CPU.
 - `ffmpegthumbnailer` also pulls `ffpmeg` which provide basic needed codecs  
+
+## Configurating Booster
+Edit `/etc/booster.yaml` 
+```
+micro /etc/booster.yaml
+```
+and put this block
+```
+compression: zstd
+extra_files: busybox
+```
+Just because we are minimal, it doesn't mean we are morons. At least busybox is there to save your ass if someone comes up
 
 ## Generating Initramfs
 Run this
