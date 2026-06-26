@@ -225,7 +225,7 @@ and put this block
 compression: zstd
 extra_files: busybox
 ```
-Just because we are minimal, it doesn't mean we are morons. At least busybox is there to save your ass if someone comes up
+Just because we are minimal, it doesn't mean we are morons. At least busybox is there to save your ass if something comes up
 
 ## Generating Initramfs
 Run this
