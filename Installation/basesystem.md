@@ -212,6 +212,7 @@ pacman -S linux-cachyos linux-cachyos-headers linux-cachyos-lts linux-cachyos-lt
 - If you don't know whether you need `sof-firmware` or not, keep it
 - `systemd-boot-manager` is a nice tool to automate systemd-boot. We could do it manually but who have time for that?
 - `cachyos-settings` will automatically handle zram and other nice improvement for us
+- `chwd` handles drivers automatically for us. We will use this later
 - `downgrade` is nice to have to rollback specific packages to previous version and pin it until upstream fixes
 - Pick `amd-ucode` if you have AMD CPU. Pick `intel-ucode` if you have Intel CPU.
 - `ffmpegthumbnailer` also pulls `ffpmeg` which provide basic needed codecs
