@@ -205,16 +205,16 @@ Then `pacman -Syu` to sync mirrorlist
 
 ## The "REAL pacstrap"
 ```
-pacman -S linux-cachyos linux-cachyos-lts linux-firmware sof-firmware base-devel booster sudo networkmanager efibootmgr systemd-boot-manager cachyos-settings chwd downgrade amd-ucode ffmpegthumbnailer busybox
+pacman -S linux-cachyos linux-cachyos-headers linux-cachyos-lts linux-cachyos-lts-headers linux-firmware sof-firmware base-devel booster sudo networkmanager efibootmgr systemd-boot-manager cachyos-settings chwd downgrade amd-ucode ffmpegthumbnailer
 ```
-- Skip `linux-cachyos-lts` if you don't care about fallback kernel. Skip `linux-cachyos` if you prefer LTS kernel for some reasons
+- `linux-cachyos` and `linux-cachyos-headers` if you want latest stable kernel
+- `linux-cachyos-lts` and `linux-cachyos-lts-header` if you want LTS kernel
 - If you don't know whether you need `sof-firmware` or not, keep it
 - `systemd-boot-manager` is a nice tool to automate systemd-boot. We could do it manually but who have time for that?
 - `cachyos-settings` will automatically handle zram and other nice improvement for us
 - `downgrade` is nice to have to rollback specific packages to previous version and pin it until upstream fixes
 - Pick `amd-ucode` if you have AMD CPU. Pick `intel-ucode` if you have Intel CPU.
 - `ffmpegthumbnailer` also pulls `ffpmeg` which provide basic needed codecs
-- `busybox` is optional if you want extra insurance that doesn't annoy you, skip if you want to but why would you? 
 
 ## Configurating Booster (Optional)
 Edit `/etc/booster.yaml` 
@@ -224,9 +224,8 @@ micro /etc/booster.yaml
 and put this block
 ```
 compression: zstd
-extra_files: busybox
 ```
-Just because we are minimal, it doesn't mean we are morons. At least busybox is there to save your ass if something comes up
+zstd is nice for even smaller images
 
 ## Generating Initramfs
 Run this
