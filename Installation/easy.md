@@ -1,5 +1,5 @@
 # Easy Version: KDE Plasma
-If any of these packages are not found, read base system page first
+Make sure to read base system page first
 
 ## Get Plasma Working
 ### Install base KDE Plasma
